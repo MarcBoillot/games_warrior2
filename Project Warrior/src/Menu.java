@@ -30,7 +30,11 @@ public class Menu {
                 System.out.println(magician);
                 System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
                 System.out.println();
-                modify(magician);
+                try {
+                    modify(magician);
+                } catch (CharacterOutOfBoundException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case "2":
 
@@ -52,6 +56,7 @@ public class Menu {
                 System.out.println();
                 modify(warrior);
                 break;
+
             case "3":
 
                 System.out.println("Exit");
@@ -64,38 +69,64 @@ public class Menu {
                 break;
         }
     }
-    public static void modify(Magician magician){
-        System.out.println("voulez vous : \n1: Voir mon personnage  \n2: Modifier mon personnage \n3: Exit");
+    public static void modify(Magician magician) throws CharacterOutOfBoundException {
+        System.out.println("voulez vous : \n1: Voir mon personnage  \n2: Modifier mon personnage \n3: Lancer partie \n4: Exit");
         Scanner input = new Scanner(System.in);
         String modify = input.nextLine();
-            switch(modify){
-                case "1":
-                    System.out.println("voir mon Magicien");
-                    System.out.println(magician);
-                    modify(magician);
-                    break;
-                case "2":
-                    System.out.println("Modifier mon Magicien");
-                    System.out.println("Renommer mon personnage");
-                    // recupere dans une variable name l'entree en string du clavier
-                    String name = input.next();
-                    input.nextLine();
-                    //Magician magician = new Magician(name);
-                    System.out.println("Donnez vos points de vie");
-                    int life = input.nextInt();
-                    input.nextLine();
-
-                    System.out.println("Donnez votre force d'attaque");
-                    int atk = input.nextInt();
-                    input.nextLine();
-                    //j'instancie le nouvel objet créé magician
-                    //Menu.createChar() = new Magician(name,life,atk);
-                    //System.out.println(Magician magician = new magician());
-                    break;
-                case "3":
-                    System.out.println("Exit");
-                    break;
-            }
+        switch(modify){
+            case "1":
+                System.out.println("voir mon Magicien");
+                System.out.println(magician);
+                modify(magician);
+                break;
+            case "2":
+                System.out.println("Modifier mon Magicien");
+                System.out.println("Renommer mon personnage");
+                // recupere dans une variable name l'entree en string du clavier
+                String name = input.next();
+                input.nextLine();
+                //Magician magician = new Magician(name);
+                System.out.println("Donnez vos points de vie");
+                int life = input.nextInt();
+                input.nextLine();
+                
+                System.out.println("Donnez votre force d'attaque");
+                int atk = input.nextInt();
+                input.nextLine();
+                //j'instancie le nouvel objet créé magician
+                magician = new Magician(name,life,atk);
+                //j'affiche les informations de l'objet magician
+                System.out.println(magician);
+                System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
+                System.out.println();
+                modify(magician);
+                break;
+            case "3":
+                System.out.println("Lancer une partie");
+                try {
+                    while (magician.getPosition() < 64) {
+                        System.out.println("vous êtes a la case : " + magician.getPosition() + "/64");
+                        De de = new De();
+                        int deValue = de.getResult();
+                        System.out.println("votre  lancé : " + deValue);
+                        magician.setPosition(magician.getPosition() + deValue);
+                        if (magician.getPosition() == 64){
+                            System.out.println("Vous avez gagné");
+                        }
+                        else if(magician.getPosition() > 64){
+                            throw new CharacterOutOfBoundException("Vous avez perdu");
+                        }
+                    }
+                    System.out.println("win"+magician.getPosition());
+                }
+                catch(CharacterOutOfBoundException e){
+                    System.out.println("Dommage : " + e.getMessage());
+                }
+                break;
+            case "4":
+                System.out.println("Exit");
+                break;
+        }
     }
     public static void modify(Warrior warrior){
         System.out.println("voulez vous : \n1: voir mon personnage  \n2: Modifier mon personnage \n3: Exit");
