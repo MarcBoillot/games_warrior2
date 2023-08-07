@@ -112,10 +112,10 @@ public class Menu {
                         System.out.println("votre  lancé : " + deValue);
                         magician.setPosition(magician.getPosition() + deValue);
                         if (magician.getPosition() == 64){
-                            System.out.println("Vous avez gagné");
+                            System.out.println("Vous avez gagné\n");
                         }
                         else if(magician.getPosition() > 64){
-                            throw new CharacterOutOfBoundException("Vous avez perdu");
+                            throw new CharacterOutOfBoundException("Vous avez perdu\n");
                         }
                     }
                     System.out.println("win"+magician.getPosition());
@@ -126,11 +126,13 @@ public class Menu {
                 break;
             case "4":
                 System.out.println("Exit");
+                modify(magician);
                 break;
+
         }
     }
     public static void modify(Warrior warrior){
-        System.out.println("voulez vous : \n1: voir mon personnage  \n2: Modifier mon personnage \n3: Exit");
+        System.out.println("voulez vous : \n1: Voir mon personnage  \n2: Modifier mon personnage \n3: Lancer partie \n4: Exit");
         Scanner input = new Scanner(System.in);
         String modify = input.nextLine();
         switch(modify){
@@ -176,11 +178,11 @@ public class Menu {
                             throw new CharacterOutOfBoundException("Vous avez perdu");
                         }
                     }
-                    System.out.println("win"+warrior.getPosition());
                 }
                 catch(CharacterOutOfBoundException e){
                     System.out.println("Dommage : " + e.getMessage());
                 }
+                modify(warrior);
                 break;
             case "4":
                 System.out.println("Exit");
