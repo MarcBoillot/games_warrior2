@@ -1,4 +1,3 @@
-import javax.xml.namespace.QName;
 import java.util.Scanner;
 
 public class Menu {
@@ -29,7 +28,7 @@ public class Menu {
                 Magician magician = new Magician(name,life,atk);
                 //j'affiche les informations de l'objet magician
                 System.out.println(magician);
-                System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
+                //System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
                 System.out.println();
                 try {
                     modify(magician);
@@ -53,7 +52,7 @@ public class Menu {
                 input.nextLine();
                 Warrior warrior = new Warrior(name,life,atk);
                 System.out.println(warrior);
-                System.out.println("Votre "+"Warrior"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
+                //System.out.println("Votre "+"Warrior"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
                 System.out.println();
                 modify(warrior);
                 break;
@@ -98,12 +97,12 @@ public class Menu {
                 magician = new Magician(name,life,atk);
                 //j'affiche les informations de l'objet magician
                 System.out.println(magician);
-                System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
+                //System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
                 System.out.println();
                 modify(magician);
                 break;
             case "3":
-                System.out.println("Lancer une partie");
+                System.out.println("Vous avez lancé une partie");
                 try {
                     while (magician.getPosition() < 64) {
                         System.out.println("vous êtes a la case : " + magician.getPosition() + "/64");
@@ -118,7 +117,7 @@ public class Menu {
                             throw new CharacterOutOfBoundException("Vous avez perdu\n");
                         }
                     }
-                    System.out.println("win"+magician.getPosition());
+                    //System.out.println("win"+magician.getPosition());
                 }
                 catch(CharacterOutOfBoundException e){
                     System.out.println("Dommage : " + e.getMessage());
@@ -158,12 +157,12 @@ public class Menu {
                 warrior = new Warrior(name,life,atk);
 
                 System.out.println(warrior);
-                System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
+                //System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
                 System.out.println();
                 modify(warrior);
                 break;
             case "3":
-                System.out.println("Lancer une partie");
+                System.out.println("Vous avez lancé une partie");
                 try {
                     while (warrior.getPosition() < 64) {
                         System.out.println("vous êtes a la case : " + warrior.getPosition() + "/64");
@@ -189,5 +188,4 @@ public class Menu {
                 break;
         }
     }
-
 }

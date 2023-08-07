@@ -1,9 +1,10 @@
-public class Characters {
-    private int position;
+ abstract class Characters {
+    private int position = 1;
     private String name;
     private  int life;
     private int atk;
-    public String getName() {
+
+     public String getName() {
         return name;
     }
 
@@ -32,14 +33,20 @@ public class Characters {
     public void setPosition(int position) {
         this.position = position;
     }
-    private Characters(){}
-    private Characters(String name){
-        this.name = name;
+    public Characters(){
+        this.name="none name";
+        this.life=1;
+        this.atk=2;
+    }
+    public Characters(String name){
+        this.name=name;
     }
     public Characters(String name, int life, int atk){
         this.name = name;
         this.life = life;
         this.atk = atk;
     }
-
+     public String toString() {
+         return "  : " +"\nName: "+ getName() + "\nLife: " + getLife() + "\nAttack: " + getAtk() + "\n";
+     }
 }
