@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Menu {
     public static void createChar() {
         System.out.println("choississez un personnage : \n1: Magician  \n2: Warrior \n3: Exit");
+        //recuperation des input dans une variable avec la methode scanner
         Scanner input =   new Scanner(System.in);
         String answer = input.nextLine();
         //selection de choix avec la methode switch
@@ -86,11 +87,11 @@ public class Menu {
                 String name = input.next();
                 input.nextLine();
                 //Magician magician = new Magician(name);
-                System.out.println("Donnez vos points de vie");
+                System.out.println("Redonnez vos points de vie");
                 int life = input.nextInt();
                 input.nextLine();
-                
-                System.out.println("Donnez votre force d'attaque");
+
+                System.out.println("Redonnez votre force d'attaque");
                 int atk = input.nextInt();
                 input.nextLine();
                 //j'instancie le nouvel objet créé magician
@@ -138,9 +139,50 @@ public class Menu {
                 System.out.println(warrior);
                 break;
             case "2":
-                System.out.println("Modifier ce dernier");
+                System.out.println("Modifier mon Warrior");
+                System.out.println("Renommer mon personnage");
+
+                String name = input.next();
+                input.nextLine();
+
+                System.out.println("Redonnez vos points de vie");
+                int life = input.nextInt();
+                input.nextLine();
+
+                System.out.println("Redonnez votre force d'attaque");
+                int atk = input.nextInt();
+                input.nextLine();
+
+                warrior = new Warrior(name,life,atk);
+
+                System.out.println(warrior);
+                System.out.println("Votre :"+"Magician"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
+                System.out.println();
+                modify(warrior);
                 break;
             case "3":
+                System.out.println("Lancer une partie");
+                try {
+                    while (warrior.getPosition() < 64) {
+                        System.out.println("vous êtes a la case : " + warrior.getPosition() + "/64");
+                        De de = new De();
+                        int deValue = de.getResult();
+                        System.out.println("votre  lancé : " + deValue);
+                        warrior.setPosition(warrior.getPosition() + deValue);
+                        if (warrior.getPosition() == 64){
+                            System.out.println("Vous avez gagné");
+                        }
+                        else if(warrior.getPosition() > 64){
+                            throw new CharacterOutOfBoundException("Vous avez perdu");
+                        }
+                    }
+                    System.out.println("win"+warrior.getPosition());
+                }
+                catch(CharacterOutOfBoundException e){
+                    System.out.println("Dommage : " + e.getMessage());
+                }
+                break;
+            case "4":
                 System.out.println("Exit");
                 break;
         }

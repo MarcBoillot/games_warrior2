@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9c25ff9-9d39-45b0-a674-892344d0aa59" name="Changes" comment="" />
+    <list default="true" id="d9c25ff9-9d39-45b0-a674-892344d0aa59" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../games_warrior2.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/marcb/Desktop/project_java/Project Warrior",
+    "last_opened_file_path": "/home/marc/Bureau/games_warrior2/Project Warrior",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,6 +63,7 @@
       <workItem from="1691044522882" duration="22940000" />
       <workItem from="1691132317417" duration="23557000" />
       <workItem from="1691321346325" duration="5113000" />
+      <workItem from="1691392503020" duration="819000" />
     </task>
     <servers />
   </component>
