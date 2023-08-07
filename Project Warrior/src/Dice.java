@@ -1,4 +1,4 @@
-public class De {
+public class Dice {
     private int result;
 
     public int getResult() {
@@ -8,8 +8,7 @@ public class De {
     public void setResult(int result) {
         this.result = result;
     }
-
-    public De() {
+    public Dice() {
         result = (int)(Math.random() * 5)+1;
     }
 }

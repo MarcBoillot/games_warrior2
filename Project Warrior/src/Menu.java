@@ -50,7 +50,7 @@ public class Menu {
                 System.out.println("Donnez votre force d'attaque");
                 atk = input.nextInt();
                 input.nextLine();
-                Warrior warrior = new Warrior(name,life,atk);
+                Characters warrior = new Warrior(name,life,atk);
                 System.out.println(warrior);
                 //System.out.println("Votre "+"Warrior"+" s'appelle " +name + " il a " + life +" point de vie "+ "et "+ atk+" d'attaque");
                 System.out.println();
@@ -103,11 +103,14 @@ public class Menu {
                 break;
             case "3":
                 System.out.println("Vous avez lancé une partie");
+
                 try {
+                    int counts =0;
                     while (magician.getPosition() < 64) {
                         System.out.println("vous êtes a la case : " + magician.getPosition() + "/64");
-                        De de = new De();
-                        int deValue = de.getResult();
+                        Dice dice = new Dice();
+                        int deValue = dice.getResult();
+                        counts++;
                         System.out.println("votre  lancé : " + deValue);
                         magician.setPosition(magician.getPosition() + deValue);
                         if (magician.getPosition() == 64){
@@ -116,11 +119,13 @@ public class Menu {
                         else if(magician.getPosition() > 64){
                             throw new CharacterOutOfBoundException("Vous avez perdu\n");
                         }
+                        System.out.println(counts);
                     }
                     //System.out.println("win"+magician.getPosition());
                 }
                 catch(CharacterOutOfBoundException e){
                     System.out.println("Dommage : " + e.getMessage());
+                    modify(magician);
                 }
                 break;
             case "4":
@@ -166,8 +171,8 @@ public class Menu {
                 try {
                     while (warrior.getPosition() < 64) {
                         System.out.println("vous êtes a la case : " + warrior.getPosition() + "/64");
-                        De de = new De();
-                        int deValue = de.getResult();
+                        Dice dice = new Dice();
+                        int deValue = dice.getResult();
                         System.out.println("votre  lancé : " + deValue);
                         warrior.setPosition(warrior.getPosition() + deValue);
                         if (warrior.getPosition() == 64){

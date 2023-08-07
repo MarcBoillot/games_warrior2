@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("Début du jeu");
-        De de = new De();
-        System.out.println(de.getResult());
+        Dice dice = new Dice();
+        System.out.println(dice.getResult());
         Menu menu = new Menu();
         menu.createChar();
     }
