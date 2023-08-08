@@ -3,7 +3,6 @@ public class Magician extends Characters {
     public String Char = "Magician";
     public Sorts sort;
     private String philtre;
-
     public String getPhiltre() {
         return philtre;
     }

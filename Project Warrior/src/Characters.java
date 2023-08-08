@@ -1,10 +1,10 @@
- abstract class Characters {
+ class Characters {
     private int position = 1;
     private String name;
     private  int life;
     private int atk;
 
-     public String getName() {
+    public String getName() {
         return name;
     }
 
