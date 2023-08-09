@@ -1,17 +1,19 @@
 public class Game {
-    public void start(Characters characters) {
+    Board board = new Board();
+    public void start(Board board) {
         try {
+            board.setPosition(1);
             int counts = 0;
-            while (characters.getPosition() < 64) {
-                System.out.println("vous êtes a la case : " + characters.getPosition() + "/64");
+            while (board.getPosition() < board.getBoard()) {
+                System.out.println("vous êtes a la case : " + board.getPosition() +  board);
                 Dice dice = new Dice();
                 int deValue = dice.getResult();
                 counts++;
                 System.out.println("votre lancé : " + deValue);
-                characters.setPosition(characters.getPosition() + deValue);
-                if (characters.getPosition() == 64) {
+                board.setPosition(board.getPosition() + deValue);
+                if (board.getPosition() == 64) {
                     System.out.println("Vous avez gagné\n");
-                } else if (characters.getPosition() > 64) {
+                } else if (board.getPosition() > 64) {
                     throw new CharacterOutOfBoundException("Vous avez perdu\n");
                 }
                 System.out.println(counts);
