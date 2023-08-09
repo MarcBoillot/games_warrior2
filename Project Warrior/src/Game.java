@@ -14,7 +14,8 @@ public class Game {
             int counts = 0;
             while (getPosition() < board.getBoard()) {
                 System.out.println("vous êtes a la case : " + getPosition() +  board);
-                Dice dice = new Dice();
+                //utilisation de l'interface pour choisir le dé
+                Dices dice = new TwoDices();
                 int deValue = dice.getResult();
                 counts++;
                 System.out.println("votre lancé : " + deValue);
