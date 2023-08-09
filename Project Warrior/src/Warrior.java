@@ -1,8 +1,24 @@
 
 public class Warrior extends Characters{
-    public String Char = "Warrior";
-    public Weapons weapon;
+    private String Char = "Warrior";
+    private Weapons weapon;
     private String shield;
+
+    public String getChar() {
+        return Char;
+    }
+
+    public void setChar(String aChar) {
+        Char = aChar;
+    }
+
+    public Weapons getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapons weapon) {
+        this.weapon = weapon;
+    }
     public String getShield() {
         return shield;
     }

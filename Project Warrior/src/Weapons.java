@@ -1,6 +1,12 @@
 public class Weapons {
     private String weapon;
-
+    private int powerWeapon;
+    public int getPowerWeapon() {
+        return powerWeapon;
+    }
+    public void setPowerWeapon(int powerWeapon) {
+        this.powerWeapon = powerWeapon;
+    }
     public String getWeapon() {
         return weapon;
     }

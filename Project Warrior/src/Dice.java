@@ -1,14 +1,6 @@
-public class Dice {
-    private int result;
-
+public class Dice implements Dices{
+      @Override
     public int getResult() {
-        return result;
-    }
-
-    public void setResult(int result) {
-        this.result = result;
-    }
-    public Dice() {
-        result = (int)(Math.random() * 5)+1;
+        return  (int)(Math.random() * 5)+1;
     }
 }

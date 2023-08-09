@@ -1,4 +1,4 @@
- class Characters {
+ public abstract class Characters {
     private String name;
     private  int life;
     private int atk;
@@ -23,7 +23,6 @@
         this.atk = atk;
     }
 
-
     public Characters(){
         this.name="default name";
         this.life=1;
@@ -31,8 +30,8 @@
     }
     public Characters(String name){
         this.name=name;
-        this.life=1;
-        this.atk=2;
+        this.life=10;
+        this.atk=20;
     }
     public Characters(String name, int life, int atk){
         this.name = name;

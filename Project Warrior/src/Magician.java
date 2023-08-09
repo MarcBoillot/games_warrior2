@@ -1,8 +1,27 @@
 
 public class Magician extends Characters {
-    public String Char = "Magician";
-    public Sorts sort;
+    private Sorts sort;
     private String philtre;
+    private String Char = "Magician";
+
+    public String getChar() {
+        return Char;
+    }
+    public void setChar(String aChar) {
+        Char = aChar;
+    }
+
+
+
+    public Sorts getSort() {
+        return sort;
+    }
+
+    public void setSort(Sorts sort) {
+        this.sort = sort;
+    }
+
+
     public String getPhiltre() {
         return philtre;
     }
