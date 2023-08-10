@@ -4,10 +4,11 @@ public class Menu {
     Scanner input;
     Game game;
     Board board;
+
     public Menu(){
         game = new Game();
         input = new Scanner(System.in);
-        board = new Board();
+        board = new Board(20);
     }
     public void createChar() {
         System.out.println("choississez un personnage : \n1: Magician  \n2: Warrior \n3: Exit");
@@ -97,7 +98,7 @@ public class Menu {
                 break;
             case "3":
                 while(answer.equals("3")){
-                    System.out.println("Vous avez lancé une partie");
+                    System.out.println("Tapez ENTREE pour lancer la partie");
                     game.start(board);
                     System.out.println("3: Relancer une partie\n4: Exit");
                     answer = input.nextLine();

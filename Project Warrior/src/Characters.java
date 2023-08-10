@@ -26,7 +26,7 @@
     public Characters(){
         this.name="default name";
         this.life=1;
-        this.atk=2;
+        this.atk=1;
     }
     public Characters(String name){
         this.name=name;

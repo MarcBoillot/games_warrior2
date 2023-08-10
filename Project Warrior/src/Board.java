@@ -1,19 +1,24 @@
+import java.util.ArrayList;
+import java.util.List;
 public class Board {
-    private int numberCases = 64;
-    private int board = numberCases;
-    public int getNumberCases() {
-        return numberCases;
+    private List<Cases> board;
+
+    public Board(int nbCase){
+        board = generateBoard(nbCase);
     }
-    public void setNumberCases(int numberCases) {
-        this.numberCases = numberCases;
-    }
-    public int getBoard() {
+    public List<Cases> getBoard(){
         return board;
     }
-    public void setBoard(int board) {
-        this.board = board;
+    public List<Cases> generateBoard (int nbCase){
+        ArrayList<Cases> cases = new ArrayList<Cases>(nbCase);
+        for (int i = 0; i < nbCase;i ++) {
+            cases.add(new Cases(i+1));
+        }
+        return cases;
     }
+
+    @Override
     public String toString() {
-        return "/"+getBoard();
+        return ""+board;
     }
 }
