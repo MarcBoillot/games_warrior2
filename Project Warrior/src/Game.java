@@ -1,22 +1,68 @@
 import java.util.Scanner;
 
 public class Game {
-    public int nbCase = 4;
-    private int position = 1;
-    Scanner input = new Scanner(System.in);;
-    Board board = new Board(nbCase);
-    Dice dice = new Dice();
 
+    private int position;
+    Scanner input;
+    Board board;
+    Dice dice;
+    public Game(){
+        this.input = new Scanner(System.in);;
+        this.dice = new Dice();
+        this.position = 0;
+        this.board = new Board();
+    }
     public int getPosition() {
         return position;
     }
-    public void setPosition(int position) {
-        this.position = position;
+    public void game(){
+        try {
+            oneTurn();
+        }catch(CharacterOutOfBoundException e){
+            System.out.println(e);
+        }
     }
 
-    public void start(Board board) {
+    private void oneTurn() throws CharacterOutOfBoundException {
+        int diceResult = this.dice.getResult();
+        System.out.println("Votre lancé est : "+diceResult);
+        System.out.println("position avant lancé"+position);
+        movePlayer(diceResult);
+        System.out.println("position apres lancé "+position);
+        newTurn();
+        restart();
+        //appeler la focntion rejouer
+    }
+
+    private void restart() throws CharacterOutOfBoundException {
+        this.position = 0;
+        newTurn();
+    }
+
+    private void newTurn() throws CharacterOutOfBoundException {
+        while (true){
+            System.out.println("1.lancer le dé \n2.Quitter ");
+            String answer =new Menu().userInput();
+            switch (answer){
+                case "1":
+                    oneTurn();
+                    break;
+                case "2":
+                    System.exit(0);
+                default:
+                    System.out.println("incorect");
+                    break;
+            }
+
+        }
+    }
+
+    private void movePlayer(int diceResult) {
+        this.position += diceResult;
+    }
+
+    /*public void start(Board board) {
         try {
-            setPosition(1);
             while (getPosition() < board.getBoard().size()) {
                 System.out.println("vous êtes a la case : " + getPosition() +  "\n"+board);
 
@@ -45,5 +91,5 @@ public class Game {
             System.out.println("Dommage : " + e.getMessage());
         }
         System.out.println("fin de partie");
-    }
+    }*/
 }

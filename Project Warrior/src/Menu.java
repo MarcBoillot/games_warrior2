@@ -1,20 +1,10 @@
 import java.util.Scanner;
 
 public class Menu {
-    Scanner input;
-    Game game;
-    Board board;
-
-    public Menu(){
-        game = new Game();
-        input = new Scanner(System.in);
-        board = new Board(game.nbCase);
-    }
     public void createChar() {
         System.out.println("choississez un personnage : \n1: Magician  \n2: Warrior \n3: Exit");
         //recuperation des input dans une variable avec la methode scanner
-        input =   new Scanner(System.in);
-        String answer = input.nextLine();
+        String answer =userInput();
         //selection de choix avec la methode switch
         switch(answer){
 
@@ -41,7 +31,7 @@ public class Menu {
 
 
         System.out.println("Donnez un nom a votre personnage");
-        String name = input.nextLine();
+        String name =userInput();
         switch (answer){
             case "1":
                 Characters magician = new Magician(name);
@@ -58,7 +48,7 @@ public class Menu {
     }
     public void modify(Characters characters) {
         System.out.println("Souhaitez vous : \n1: Voir votre personnage  \n2: Modifier votre personnage \n3: Lancer partie \n4: Exit");
-        String answer = input.next();
+        String answer = userInput();
             switch (answer) {
 
                 case "1":
@@ -69,34 +59,14 @@ public class Menu {
 
                     break;
                 case "2":
-                    System.out.println("Modifier !");
-                    System.out.println("Renommer mon personnage");
-                    String name = input.next();
-
-                    System.out.println("Donnez vos points de vie");
-                    int life = input.nextInt();
-
-                    System.out.println("Donnez votre force d'attaque");
-                    int atk = input.nextInt();
-
-                    update_character(characters, name, life, atk);
-
-                    System.out.println(characters);
-                    System.out.println();
-
-                    System.out.println();
+                    updateMenu(characters);
                     break;
                 case "3":
-                    while (answer.equals("3")) {
-                        System.out.println("Partie lancée");
-                        game.start(board);
-                        System.out.println("3: Relancer une partie\n4: Exit");
-                        input.nextLine();
-                        answer = input.nextLine();
-                    }
+                    launcher();
                     break;
                 case "4":
                     System.out.println("Exit");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Choix incorrect");
@@ -107,6 +77,36 @@ public class Menu {
         }
     }
 
+    private void launcher() {
+        new Game().game();
+    }
+
+    private void updateMenu(Characters characters) {
+        System.out.println("Modifier !");
+        System.out.println("Renommer mon personnage");
+        String name = userInput();
+
+        System.out.println("Donnez vos points de vie");
+        int life = userInputInt();
+
+        System.out.println("Donnez votre force d'attaque");
+        int atk = userInputInt();
+
+        update_character(characters, name, life, atk);
+
+        System.out.println(characters);
+        System.out.println();
+
+        System.out.println();
+    }
+    public String userInput(){
+       Scanner input = new Scanner(System.in);
+       return input.nextLine();
+    }
+    private int userInputInt(){
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
+    }
 
     private void update_character(Characters characters, String name, int life, int atk) {
         characters.setName(name);
