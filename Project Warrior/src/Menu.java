@@ -8,7 +8,7 @@ public class Menu {
     public Menu(){
         game = new Game();
         input = new Scanner(System.in);
-        board = new Board(20);
+        board = new Board(game.nbCase);
     }
     public void createChar() {
         System.out.println("choississez un personnage : \n1: Magician  \n2: Warrior \n3: Exit");
@@ -42,13 +42,6 @@ public class Menu {
 
         System.out.println("Donnez un nom a votre personnage");
         String name = input.nextLine();
-
-        /*System.out.println("Donnez vos points de vie");
-        int life = input.nextInt();
-
-        System.out.println("Donnez votre force d'attaque");
-        int atk = input.nextInt();*/
-
         switch (answer){
             case "1":
                 Characters magician = new Magician(name);
@@ -64,56 +57,57 @@ public class Menu {
         System.out.println();
     }
     public void modify(Characters characters) {
-        input.nextLine();
-        System.out.println("Souhiatez vous : \n1: Voir votre personnage  \n2: Modifier votre personnage \n3: Lancer partie \n4: Exit");
+        System.out.println("Souhaitez vous : \n1: Voir votre personnage  \n2: Modifier votre personnage \n3: Lancer partie \n4: Exit");
+        String answer = input.next();
+            switch (answer) {
 
+                case "1":
 
-        String answer = input.nextLine();
+                    System.out.println("Mes Stats !");
+                    System.out.println(characters);
+                    System.out.println();
 
-        switch(answer){
+                    break;
+                case "2":
+                    System.out.println("Modifier !");
+                    System.out.println("Renommer mon personnage");
+                    String name = input.next();
 
-            case "1":
-                System.out.println("Mes Stats !");
-                System.out.println(characters);
-                modify(characters);
-                System.out.println();
-                break;
-            case "2":
-                System.out.println("Modifier !");
-                System.out.println("Renommer mon personnage");
-                String name = input.next();
+                    System.out.println("Donnez vos points de vie");
+                    int life = input.nextInt();
 
-                System.out.println("Donnez vos points de vie");
-                int life = input.nextInt();
+                    System.out.println("Donnez votre force d'attaque");
+                    int atk = input.nextInt();
 
-                System.out.println("Donnez votre force d'attaque");
-                int atk = input.nextInt();
+                    update_character(characters, name, life, atk);
 
-                update_character(characters, name,life,atk);
+                    System.out.println(characters);
+                    System.out.println();
 
-                System.out.println(characters);
-                System.out.println();
-                modify(characters);
-                System.out.println();
-                break;
-            case "3":
-                while(answer.equals("3")){
-                    System.out.println("Tapez ENTREE pour lancer la partie");
-                    game.start(board);
-                    System.out.println("3: Relancer une partie\n4: Exit");
-                    answer = input.nextLine();
-                }
-                break;
-            case "4":
-                System.out.println("Exit");
-                modify(characters);
-                break;
-            default:
-                System.out.println("Choix incorrect");
-                modify(characters);
-                break;
+                    System.out.println();
+                    break;
+                case "3":
+                    while (answer.equals("3")) {
+                        System.out.println("Partie lancée");
+                        game.start(board);
+                        System.out.println("3: Relancer une partie\n4: Exit");
+                        input.nextLine();
+                        answer = input.nextLine();
+                    }
+                    break;
+                case "4":
+                    System.out.println("Exit");
+                    break;
+                default:
+                    System.out.println("Choix incorrect");
+                    break;
+            }
+        if(answer.equals("1") || answer.equals("2") ){
+            modify(characters);
         }
     }
+
+
     private void update_character(Characters characters, String name, int life, int atk) {
         characters.setName(name);
         characters.setLife(life);

@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
 public class Game {
-    Scanner input = new Scanner(System.in);;
-    public int nbCase;
-    Board board = new Board(nbCase);
+    public int nbCase = 4;
     private int position = 1;
+    Scanner input = new Scanner(System.in);;
+    Board board = new Board(nbCase);
+    Dice dice = new Dice();
 
     public int getPosition() {
         return position;
@@ -14,37 +15,35 @@ public class Game {
     }
 
     public void start(Board board) {
-        String answer = input.nextLine();
-        switch(answer){
-            case "1":
-                System.out.println("Lancer le dé");
-                answer = input.next();
-                break;
-            case "2":
-                System.out.println("Exit");
-                break;
-        }
         try {
-
             setPosition(1);
-            int counts = 0;
             while (getPosition() < board.getBoard().size()) {
                 System.out.println("vous êtes a la case : " + getPosition() +  "\n"+board);
+
                 //utilisation de l'interface pour choisir le dé
-                Dices dice = new loadedDice();
+
+                Dices dice = new Dice();
+                System.out.println("1.Lancer le dé \n2.Exit");
+                String answer = input.next();
+
+                while (!answer.equals("1")){
+                    System.out.println("mauvais choix : \nAppuyer sur 1 pour lancer");
+                    answer = input.next();
+                }
+
                 int deValue = dice.getResult();
-                counts++;
                 System.out.println("votre lancé : " + deValue);
                 setPosition(getPosition() + deValue);
+
                 if (getPosition() == board.getBoard().size()) {
                     System.out.println("Vous avez gagné\n");
                 } else if (getPosition() > board.getBoard().size()) {
-                    throw new CharacterOutOfBoundException("Vous avez perdu\n");
+                    throw new CharacterOutOfBoundException("vous avez perdu");
                 }
-                System.out.println(counts);
             }
         } catch (CharacterOutOfBoundException e) {
             System.out.println("Dommage : " + e.getMessage());
         }
+        System.out.println("fin de partie");
     }
 }
