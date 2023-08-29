@@ -7,7 +7,7 @@ public class Game {
     Board board;
     Dice dice;
     public Game(){
-        this.input = new Scanner(System.in);;
+        this.input = new Scanner(System.in);
         this.dice = new Dice();
         this.position = 0;
         this.board = new Board();

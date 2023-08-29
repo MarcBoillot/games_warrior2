@@ -35,6 +35,6 @@ public class Warrior extends Characters{
         super(name, life, atk);
     }
     public String toString() {
-        return Char+": " +"\nName: "+ getName() + "\nLife: " + getLife() + "\nAttack: " + getAtk() + "\n";
+        return Char+": " +"\nName: "+ getName() + "\nLife: " + getLife() + "\nAttack: " + getStrength() + "\n";
     }
 }

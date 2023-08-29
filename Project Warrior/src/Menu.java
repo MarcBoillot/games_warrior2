@@ -1,20 +1,60 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
+    public void displayHeroDetails(Characters hero) {
+        System.out.println("Type: " + hero.getType());
+        System.out.println("Nom: " + hero.getName());
+        System.out.println("Force: " + hero.getStrength());
+        System.out.println("Vie: " + hero.getLife());
+        System.out.println("------------------------");
+    }
+
     public void createChar() {
-        System.out.println("choississez un personnage : \n1: Magician  \n2: Warrior \n3: Exit");
+        System.out.println("choississez un personnage : \n1: magician  \n2: warrior \n3: Exit");
         //recuperation des input dans une variable avec la methode scanner
         String answer =userInput();
         //selection de choix avec la methode switch
+
+
+
+
+
+        Scanner scanner = new Scanner(System.in);
+
+        List<Characters> heroes = DataBase.getHeroes();
+
+        System.out.println("Veuillez sélectionner un personnage :");
+
+        for (int i = 0; i < heroes.size(); i++) {
+            Characters hero = heroes.get(i);
+            System.out.println((i + 1) + ". " + hero.getName() + " (" + hero.getType() + ")" );
+            System.out.println("Vie : "+hero.getLife());
+            System.out.println("Force :"+hero.getStrength());
+            System.out.println("---------------------------");
+        }
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice >= 1 && choice <= heroes.size()) {
+            Characters selectedHero = heroes.get(choice - 1);
+            System.out.println("Vous avez choisi " + selectedHero.getType() + " !");
+            displayHeroDetails(selectedHero);
+        } else {
+            System.out.println("Choix invalide !");
+        }
+
+
         switch(answer){
 
             case "1":
-                System.out.println("Magician !");
+                System.out.println("magician !");
                 createCharacter(answer);
                 System.out.println();
                 break;
             case "2":
-                System.out.println("Warrior !");
+                System.out.println("warrior !");
                 createCharacter(answer);
                 System.out.println();
                 break;
@@ -35,12 +75,12 @@ public class Menu {
         switch (answer){
             case "1":
                 Characters magician = new Magician(name);
-                System.out.println(magician);
+                System.out.println("reponse1"+magician);
                 modify(magician);
                 break;
             case"2":
                 Characters warrior = new Warrior(name);
-                System.out.println(warrior);
+                System.out.println("reponse2"+warrior);
                 modify(warrior);
                 break;
         }
@@ -90,9 +130,9 @@ public class Menu {
         int life = userInputInt();
 
         System.out.println("Donnez votre force d'attaque");
-        int atk = userInputInt();
+        int strength = userInputInt();
 
-        update_character(characters, name, life, atk);
+        update_character(characters, name, life, strength);
 
         System.out.println(characters);
         System.out.println();
@@ -108,9 +148,9 @@ public class Menu {
         return input.nextInt();
     }
 
-    private void update_character(Characters characters, String name, int life, int atk) {
+    private void update_character(Characters characters, String name, int life, int strength) {
         characters.setName(name);
         characters.setLife(life);
-        characters.setAtk(atk);
+        characters.setStrength(strength);
     }
 }
